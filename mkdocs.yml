@@ -1,0 +1,6 @@
+site_name: My Docs
+
+plugins:
+  - search
+  - mermaid2:
+      version: 10.0.2
