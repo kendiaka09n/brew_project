@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "brewery-project"
+version = "1"
+description = "Projeto de ETL de API, utilizando medalion"
+authors = ["Fabio Akamine"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.11.9"
+mkdocs = "^1.6.1"
+mkdocs-mermaid2-plugin = "^1.1.1"
+mkdocs-material = "^9.5.40"
+mkdocstrings = {extras = ["python"], version = "^0.26.2"}
+taskipy = "^1.13.0"
+isort = "^5.13.2"
+black = "^24.10.0"
+pytest = "^8.3.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.taskipy.tasks]
+format = """
+isort .
+black .
+"""
+kill = "kill -9 $(lsof -t -i :8000)"
+test = "pytest -v"
+run = """
+python3 app/main.py
+"""
+doc = "mkdocs serve"
