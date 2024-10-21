@@ -1,4 +1,4 @@
-from app.funcao import check_status
+from src.pipeline.status_api import check_status
 
 def test_verifica_status_api():
     saida=check_status()
